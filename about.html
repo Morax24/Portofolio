@@ -113,15 +113,46 @@
     </div>
 
     <script>
-      // Navigasi aktif
-      document.querySelectorAll(".nav-menu li").forEach((item) => {
-        item.addEventListener("click", function () {
-          document.querySelectorAll(".nav-menu li").forEach((i) => {
-            i.classList.remove("active");
-          });
-          this.classList.add("active");
-        });
-      });
+      // Fungsi untuk toggle minimize dan un-minimize window
+function toggleWindow() {
+  const mainContent = document.querySelector('main.content');
+  const toggleBtn = document.querySelector('.window-controls .window-btn');
+  
+  if (mainContent.style.display === 'none') {
+    mainContent.style.display = 'block';
+    toggleBtn.innerHTML = '&darr;';
+    localStorage.setItem('windowMinimized', 'false');
+  } else {
+    mainContent.style.display = 'none';
+    toggleBtn.innerHTML = '&uarr;';
+    localStorage.setItem('windowMinimized', 'true');
+  }
+}
+
+// Cek status minimize saat halaman dimuat
+window.addEventListener('DOMContentLoaded', function() {
+  const mainContent = document.querySelector('main.content');
+  const toggleBtn = document.querySelector('.window-controls .window-btn');
+  const isMinimized = localStorage.getItem('windowMinimized');
+  
+  if (isMinimized === 'true') {
+    mainContent.style.display = 'none';
+    toggleBtn.innerHTML = '&uarr;';
+  } else {
+    mainContent.style.display = 'block';
+    toggleBtn.innerHTML = '&darr;';
+  }
+});
+
+// Navigasi aktif
+document.querySelectorAll(".nav-menu li").forEach((item) => {
+  item.addEventListener("click", function () {
+    document.querySelectorAll(".nav-menu li").forEach((i) => {
+      i.classList.remove("active");
+    });
+    this.classList.add("active");
+  });
+});
     </script>
   </body>
 </html>

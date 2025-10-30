@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Contact | Ferrari Prayoga Setiyawan</title>
   <link rel="stylesheet" href="styles.css" />
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 </head>
 <body>
   <!-- Layout Utama -->
@@ -95,23 +95,46 @@
   </div>
 
   <script>
-    // Fungsi untuk toggle minimize dan un-minimize window
-    function toggleWindow() {
-      const windowElement = document.getElementById('contactWindow'); // Pastikan elemen ini ada
-      if(windowElement) {
-        windowElement.classList.toggle('minimized');
-      }
-    }
+      // Fungsi untuk toggle minimize dan un-minimize window
+function toggleWindow() {
+  const mainContent = document.querySelector('main.content');
+  const toggleBtn = document.querySelector('.window-controls .window-btn');
+  
+  if (mainContent.style.display === 'none') {
+    mainContent.style.display = 'block';
+    toggleBtn.innerHTML = '&darr;';
+    localStorage.setItem('windowMinimized', 'false');
+  } else {
+    mainContent.style.display = 'none';
+    toggleBtn.innerHTML = '&uarr;';
+    localStorage.setItem('windowMinimized', 'true');
+  }
+}
 
-    // Navigasi aktif
-    document.querySelectorAll(".nav-menu li").forEach((item) => {
-      item.addEventListener("click", function () {
-        document.querySelectorAll(".nav-menu li").forEach((i) => {
-          i.classList.remove("active");
-        });
-        this.classList.add("active");
-      });
+// Cek status minimize saat halaman dimuat
+window.addEventListener('DOMContentLoaded', function() {
+  const mainContent = document.querySelector('main.content');
+  const toggleBtn = document.querySelector('.window-controls .window-btn');
+  const isMinimized = localStorage.getItem('windowMinimized');
+  
+  if (isMinimized === 'true') {
+    mainContent.style.display = 'none';
+    toggleBtn.innerHTML = '&uarr;';
+  } else {
+    mainContent.style.display = 'block';
+    toggleBtn.innerHTML = '&darr;';
+  }
+});
+
+// Navigasi aktif
+document.querySelectorAll(".nav-menu li").forEach((item) => {
+  item.addEventListener("click", function () {
+    document.querySelectorAll(".nav-menu li").forEach((i) => {
+      i.classList.remove("active");
     });
-  </script>
+    this.classList.add("active");
+  });
+});
+    </script>
 </body>
 </html>
