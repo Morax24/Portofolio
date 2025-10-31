@@ -123,7 +123,7 @@
                     </li>
                     <li>
                       <div class="bullet"></div>
-                      Laravel
+                      JavaScript
                     </li>
                     <li>
                       <div class="bullet"></div>
@@ -131,7 +131,15 @@
                     </li>
                     <li>
                       <div class="bullet"></div>
+                      Laravel
+                    </li>
+                    <li>
+                      <div class="bullet"></div>
                       MySql
+                    </li>
+                    <li>
+                      <div class="bullet"></div>
+                      Flutter
                     </li>
                   </ul>
                   <div class="flip-hint">(Click to flip back)</div>
@@ -283,7 +291,13 @@
                     <li>
                       <div class="bullet"></div>
                       <a href="https://github.com/TuanYoga" target="_blank" style="text-decoration: none; color: inherit;">
-                        GitHub
+                        GitHub 1
+                      </a>
+                    </li>
+                    <li>
+                      <div class="bullet"></div>
+                      <a href="https://github.com/Morax24" target="_blank" style="text-decoration: none; color: inherit;">
+                        GitHub 2
                       </a>
                     </li>
                     <li>
@@ -315,7 +329,13 @@
     </div>
 
     <script>
-      // Fungsi untuk toggle minimize dan un-minimize window
+      // JavaScript sederhana untuk flip card
+      document.querySelectorAll(".profile-card").forEach((card) => {
+        card.addEventListener("click", function () {
+          this.querySelector(".card-inner").classList.toggle("is-flipped");
+        });
+      });
+        // Fungsi untuk toggle minimize dan un-minimize window
 function toggleWindow() {
   const mainContent = document.querySelector('main.content');
   const toggleBtn = document.querySelector('.window-controls .window-btn');
